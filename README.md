@@ -39,4 +39,5 @@ console.log(n.round(-3).done())
 ```
 
 ##Development
+
 GitHub: https://github.com/kakserpom/bcmath.js
