@@ -1,0 +1,15 @@
+{
+  "name": "bcmath",
+  "version": "1.2.7",
+  "type": "module",
+  "description": "Arbitrary-length arithmetics API based on locutus/php/bcmath",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kak.serpom.po.yaitsam@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "locutus": "^2.0.15"
+  }
+}
