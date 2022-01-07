@@ -38,6 +38,6 @@ console.log(n.round(-3).done())
 //173415000
 ```
 
-##Development
+## Development
 
 GitHub: https://github.com/kakserpom/bcmath.js
