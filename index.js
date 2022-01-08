@@ -3,14 +3,14 @@ import * as bc_pkg from "locutus/php/bc/index.js";
 const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 
 /**
- *
+ * Chain
  */
 export class Chain {
 
     /**
      *
-     * @param value
-     * @param scale
+     * @param value Number
+     * @param scale Number of decimal places (default: 10)
      */
     constructor(value, scale = 10) {
         this.value = value
@@ -18,8 +18,8 @@ export class Chain {
     }
 
     /**
-     *
-     * @param scale
+     * Set the scale of operations
+     * @param scale Number of decimal places
      * @returns {Chain}
      */
     scale(scale) {
@@ -28,36 +28,50 @@ export class Chain {
     }
 
     /**
-     *
-     * @param value
-     * @returns {number}
+     * Returns:
+     -1 if current value is lesser than the number
+     0 if left is equal to the number
+     1 if left is greater than the number
+     * @param left Left operand
+     * @param right Right operand
+     * @returns {int}
      */
-    compare(value) {
-        return bccomp(this.value, value, this._scale)
+    compare(number) {
+        return bccomp(this.value, number, this._scale)
     }
 
     /**
-     *
-     * @param n
+     * Round value to the nearest round number
+     * @param precision Number of decimal places. Can be negative. Default: 0
+     * @returns {string}
+     */
+    round(precision = 0) {
+        this.value = round(this.value, precision)
+        return this
+    }
+
+    /**
+     * Round the number down
+     * @param precision Number of decimal places. Can be negative. Default: 0
      * @returns {Chain}
      */
-    round(n = 0) {
-        this.value = round(this.value, n)
-        return this
-    }
-
-    floor(n = 0) {
-        this.value = floor(this.value, n)
-        return this
-    }
-
-    ceil(n = 0) {
-        this.value = ceil(this.value, n)
+    floor(precision = 0) {
+        this.value = floor(this.value, precision)
         return this
     }
 
     /**
-     *
+     * Round the number up
+     * @param precision Number of decimal places. Can be negative. Default: 0
+     * @returns {Chain}
+     */
+    ceil(precision = 0) {
+        this.value = ceil(this.value, precision)
+        return this
+    }
+
+    /**
+     * Pow
      * @param power
      * @returns {Chain}
      */
@@ -67,7 +81,7 @@ export class Chain {
     }
 
     /**
-     *
+     * Multiply
      * @param value
      * @returns {Chain}
      */
@@ -77,63 +91,67 @@ export class Chain {
     }
 
     /**
-     *
-     * @param value
+     * Divide value by a divisor
+     * @param divisor Divisor
      * @returns {Chain}
      */
-    divide(value) {
-        this.value = bcdiv(this.value, value, this._scale)
+    divide(divisor) {
+        this.value = bcdiv(this.value, divisor, this._scale)
         return this
     }
 
     /**
-     *
-     * @param value
+     * Substract a number
+     * @param number Number to add
      * @returns {Chain}
      */
-    substract(value) {
-        this.value = bcsub(this.value, value, this._scale)
+    substract(number) {
+        this.value = bcsub(this.value, number, this._scale)
         return this
     }
 
     /**
-     *
+     * Add a number
      * @param value
      * @returns {Chain}
      */
-    add(value) {
-        this.value = bcadd(this.value, value, this._scale)
+    add(number) {
+        this.value = bcadd(this.value, number, this._scale)
         return this
     }
 
     /**
-     *
-     * @param args
+     * Returns the highest number
+     * @param numbers Array of numbers
      * @returns {Chain}
      */
-    max(...args) {
-        args.forEach(arg => {
-            if (bccomp(this.value, arg, this._scale) < 0) {
-                this.value = arg
+    max(...numbers) {
+        numbers.forEach(number => {
+            if (bccomp(this.value, number, this._scale) < 0) {
+                this.value = number
             }
         })
         return this
     }
 
     /**
-     *
-     * @param args
+     * Returns the lowest number
+     * @param numbers Array of numbers
      * @returns {Chain}
      */
-    min(...args) {
-        args.forEach(arg => {
-            if (bccomp(this.value, arg, this._scale) > 0) {
-                this.value = arg
+    min(...numbers) {
+        numbers.forEach(number => {
+            if (bccomp(this.value, number, this._scale) > 0) {
+                this.value = number
             }
         })
         return this
     }
 
+    /**
+     * Returns the absolute value of the specified number
+     * @returns {Chain}
+     */
     abs() {
         if (compare(this.value, 0) < 0) {
             this.multiply(-1)
@@ -143,7 +161,7 @@ export class Chain {
 
 
     /**
-     * 
+     *
      * @param plus
      * @returns {string}
      */
@@ -157,7 +175,7 @@ export class Chain {
 
 
     /**
-     *
+     * Get the raw value
      * @returns {*}
      */
     raw() {
@@ -166,12 +184,12 @@ export class Chain {
 }
 
 /**
- *
+ * Trims empty decimal places
  * @param value
  * @returns {string}
  */
 function trimZeroes(value) {
-    const split = value.toString().split('.')
+    const split = value.toString().split('.', 2)
     if (split.length > 1) {
         split[1] = split[1].replace(/0+$/, '')
         if (split[1].length === 0) {
@@ -182,7 +200,7 @@ function trimZeroes(value) {
 }
 
 /**
- *
+ * Returns Chain object
  * @param value
  * @returns {Chain}
  */
@@ -191,20 +209,24 @@ export function chain(value) {
 }
 
 /**
- *
- * @param a
- * @param b
- * @returns {number}
+ * Returns:
+    -1 if left is lesser than right
+    0 if left is equal to right
+    1 if left is greater than right
+ * @param left Left operand
+ * @param right Right operand
+ * @returns {int}
  */
-export function compare(a, b, scale = 10) {
-    return bccomp(a, b, scale)
+export function compare(left, right, scale = 10) {
+    return bccomp(left, right, scale)
 }
 
 /**
  *
- * @param number
- * @param power
- * @param scale
+ * Number to be raised to a power
+ * @param number Number
+ * @param power Power
+ * @param scale Number of decimal places
  * @returns {number|*}
  */
 export function pow(number, power, scale = 10) {
@@ -229,9 +251,10 @@ export function pow(number, power, scale = 10) {
 }
 
 /**
- *
- * @param number
- * @returns {*}
+ * Round the number to the nearest round number
+ * @param number Number
+ * @param precision Number of decimal places. Can be negative. Default: 0
+ * @returns {string}
  */
 export function round(number = 0, precision) {
     if (precision >= 0) {
@@ -242,6 +265,11 @@ export function round(number = 0, precision) {
     return bcmul(bcround(bcdiv(floor(number), p), precision), p)
 }
 
+/**
+ * Returns the absolute value of the specified number
+ * @param number
+ * @returns {string}
+ */
 export function abs(number) {
     if (compare(number, 0) >= 0) {
         return trimZeroes(number)
@@ -251,10 +279,10 @@ export function abs(number) {
 }
 
 /**
- *
- * @param number
- * @param precision
- * @returns {*}
+ * Round the number down
+ * @param number Subject number
+ * @param precision Number of decimal places. Can be negative. Default: 0
+ * @returns {string}
  */
 export function floor(number, precision = 0) {
     const m = pow(10, precision)
@@ -265,10 +293,10 @@ export function floor(number, precision = 0) {
 }
 
 /**
- *
- * @param number
- * @param precision
- * @return number
+ * Round the number up
+ * @param number Subject number
+ * @param precision Number of decimal places. Can be negative. Default: 0
+ * @returns {string}
  */
 export function ceil(number, precision = 0) {
     number = number.toString()
@@ -283,53 +311,153 @@ export function ceil(number, precision = 0) {
 }
 
 /**
- *
- * @param a
- * @param b
- * @param scale
- * @returns number
+ * Multiply
+ * @param number
+ * @param multiplier
+ * @param scale Number of decimal places
+ * @returns {string}
  */
-export function multiply(a, b, scale = 10) {
-    return trimZeroes(bcmul(a, b, scale))
+export function multiply(number, multiplier, scale = 10) {
+    return trimZeroes(bcmul(number, multiplier, scale))
+}
+
+/**
+ * Divide
+ * @param number
+ * @param divisor
+ * @param scale Number of decimal places
+ * @returns {string}
+ */
+export function divide(number, divisor, scale = 10) {
+    return trimZeroes(bcdiv(number, divisor, scale))
+}
+
+/**
+ * Add two numbers
+ * @param left Left operand
+ * @param right Right operand
+ * @param scale Number of decimal places
+ * @returns {string}
+ */
+export function add(left, right, scale = 10) {
+    return trimZeroes(bcadd(left, right, scale))
+}
+
+/**
+ * Get the modulus
+ * @param number
+ * @param divisor
+ * @returns {string}
+ */
+export function mod(number, divisor) {
+    return trimZeroes(substract(number, multiply(divisor, floor(divide(number, divisor)))))
+}
+
+
+/**
+ * Substract right from left
+ * @param left Left operand
+ * @param right Right operand
+ * @param scale Number of decimal places
+ * @returns {string}
+ */
+export function substract(left, right, scale = 10) {
+    return trimZeroes(bcsub(left, right, scale))
+}
+
+
+/**
+ * Returns the highest number
+ * @param numbers Array of numbers
+ * @param scale Number of decimal places
+ * @returns {string}
+ */
+export function max(numbers, scale = 10) {
+    let result = null
+    numbers.forEach(number => {
+        if (result === null || bccomp(result, number, scale) < 0) {
+            result = number
+        }
+    })
+    return result
+}
+
+/**
+ * Returns the lowest number
+ * @param numbers Array of numbers
+ * @param scale Number of decimal places
+ * @returns {string}
+ */
+export function min(numbers, scale = 10) {
+    let result = null
+    numbers.forEach(number => {
+        if (result === null || bccomp(result, number, scale) > 0) {
+            result = number
+        }
+    })
+    return result
+}
+
+/**
+ * Check if the number fits in a signed BigInt
+ * @param number Number
+ * @returns {boolean}
+ */
+export function isBigInt(number) {
+    return compare(abs(number), '9223372036854775807') <= 0
+}
+
+/**
+ * Check if the number is safe to use in Javascript BigInt
+ * @param number Number
+ * @returns {boolean}
+ */
+export function isSafeBigInt(number) {
+    return compare(abs(number), Number.MAX_SAFE_INTEGER) <= 0
 }
 
 /**
  *
- * @param a
- * @param b
- * @param scale
- * @returns number
+ * @returns {Generator<number, void, *>}
  */
-export function divide(a, b, scale = 10) {
-    return trimZeroes(bcdiv(a, b, scale))
-}
-
-
-/**
- *
- * @param a
- * @param b
- * @param scale
- * @returns number
- */
-export function add(a, b, scale = 10) {
-    return trimZeroes(bcadd(a, b, scale))
+function* generateDigitsOfPi() {
+    let q = 1n
+    let r = 180n
+    let t = 60n
+    let i = 2n
+    for (; ;) {
+        let digit = ((i * 27n - 12n) * q + r * 5n) / (t * 5n)
+        yield Number(digit)
+        let u = i * 3n
+        u = (u + 1n) * 3n * (u + 2n)
+        r = u * 10n * (q * (i * 5n - 2n) + r - t * digit)
+        q *= 10n * i * (i++ * 2n - 1n)
+        t *= u
+    }
 }
 
 /**
- *
- * @param a
- * @param b
- * @param scale
- * @returns number
+ * Get π
+ * @param scale Number of decimal places
+ * @returns {string}
  */
-export function substract(a, b, scale = 10) {
-    return trimZeroes(bcsub(a, b, scale))
+export function pi(scale = 10) {
+    const iter = generateDigitsOfPi()
+    let pi = iter.next().value
+    if (scale > 0) {
+        pi += '.'
+    }
+    for (let i = 0; i < scale; ++i) {
+        pi += iter.next().value;
+    }
+    return pi
 }
 
-export function isBigInt(n) {
-    return compare(abs(n), '9223372036854775807') <= 0
-}
-export function isSafeBigInt(n) {
-    return compare(abs(n), Number.MAX_SAFE_INTEGER) <= 0
+/**
+ * π in a formatted string, up to 50 digits per line
+ * @param scale Number of decimal places
+ * @returns {string}
+ */
+export function piFormatted(scale = 1000) {
+    return pi(scale).match(/^3\.|\d{1,50}/g).join('\n')
 }
