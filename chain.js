@@ -3,12 +3,12 @@ import * as bc_pkg from "locutus/php/bc/index.js";
 
 const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 
-class ChainClass {
+export class Chain {
 
     /**
      * Constructor
-     * @param number Number
-     * @param scale Number of decimal places (default: 10)
+     * @param {string|number|BigInt} number Number
+     * @param {int} scale Number of decimal places (default: 10)
      */
     constructor(number, scale = 10) {
         this.value = number
@@ -26,7 +26,7 @@ class ChainClass {
 
     /**
      * Set the scale of operations
-     * @param scale Number of decimal places
+     * @param {int} scale Number of decimal places
      * @returns {Chain}
      */
     scale(scale) {
@@ -109,7 +109,7 @@ class ChainClass {
 
     /**
      * Substract a number
-     * @param number Number to add
+     * @param {string|number|BigInt} number Number to add
      * @returns {Chain}
      */
     sub(number) {
@@ -129,7 +129,7 @@ class ChainClass {
 
     /**
      * Returns the highest number
-     * @param numbers Array of numbers
+     * @param {string|number|BigInt} numbers Array of numbers
      * @returns {Chain}
      */
     max(...numbers) {
@@ -143,7 +143,7 @@ class ChainClass {
 
     /**
      * Returns the lowest number
-     * @param numbers Array of numbers
+     * @param {string|number|BigInt} numbers Array of numbers
      * @returns {Chain}
      */
     min(...numbers) {
@@ -189,5 +189,3 @@ class ChainClass {
         return this.value
     }
 }
-
-export const Chain = ChainClass

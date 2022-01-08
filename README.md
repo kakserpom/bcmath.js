@@ -16,7 +16,9 @@ bcmath
 ## Examples
 ```
 import {Bcmath} from 'bcmath'
-const math  = new Bcmath(20)
+
+// Spawn a bcmath nstance with a precision of 20 decimal places
+const math  = Bcmath(20)
 
 console.log(0.1 + 0.2 + 0.3)
 // 0.6000000000000001 :-(
@@ -49,301 +51,998 @@ console.log(math.pi(50))
 console.log(math.sqrt(2))
 // 1.41421568627450980392
 ```
-## Classes
 
-<dl>
-<dt><a href="#BcmathClass">BcmathClass</a></dt>
-<dd></dd>
-</dl>
+## API
+### index.js
 
-## Functions
 
-<dl>
-<dt><a href="#trimZeroes">trimZeroes(value)</a> ⇒ <code>string</code></dt>
-<dd><p>Trims empty decimal places</p>
-</dd>
-</dl>
+#### Bcmath(scale) 
 
-<a name="BcmathClass"></a>
+Get a BcmathClass instance
 
-## BcmathClass
-**Kind**: global class  
 
-* [BcmathClass](#BcmathClass)
-    * [new BcmathClass(scale)](#new_BcmathClass_new)
-    * [.chain(number, scale)](#BcmathClass+chain) ⇒ <code>Chain</code>
-    * [.compare(left, right)](#BcmathClass+compare) ⇒ <code>int</code>
-    * [.pow(number, power)](#BcmathClass+pow) ⇒ <code>number</code> \| <code>\*</code>
-    * [.round(number, precision)](#BcmathClass+round) ⇒ <code>string</code>
-    * [.abs(number)](#BcmathClass+abs) ⇒ <code>string</code>
-    * [.floor(number, precision)](#BcmathClass+floor) ⇒ <code>string</code>
-    * [.ceil(number, precision)](#BcmathClass+ceil) ⇒ <code>string</code>
-    * [.mul(number, multiplier, scale)](#BcmathClass+mul) ⇒ <code>string</code>
-    * [.div(number, divisor, scale)](#BcmathClass+div) ⇒ <code>string</code>
-    * [.add(left, right, scale)](#BcmathClass+add) ⇒ <code>string</code>
-    * [.mod(number, divisor)](#BcmathClass+mod) ⇒ <code>string</code>
-    * [.sub(left, right, scale)](#BcmathClass+sub) ⇒ <code>string</code>
-    * [.max(scale)](#BcmathClass+max) ⇒ <code>string</code>
-    * [.min(scale)](#BcmathClass+min) ⇒ <code>string</code>
-    * [.isBigInt(number)](#BcmathClass+isBigInt) ⇒ <code>boolean</code>
-    * [.isSafeBigInt(number)](#BcmathClass+isSafeBigInt) ⇒ <code>boolean</code>
-    * [.generateDigitsOfPi()](#BcmathClass+generateDigitsOfPi) ⇒ <code>Generator.&lt;number&gt;</code>
-    * [.pi(scale)](#BcmathClass+pi) ⇒ <code>string</code>
-    * [.piFormatted(scale)](#BcmathClass+piFormatted) ⇒ <code>string</code>
-    * [.sqrt(number, scale)](#BcmathClass+sqrt) ⇒ <code>string</code>
-    * [.neg(number)](#BcmathClass+neg)
-    * [.eval(expr, variables)](#BcmathClass+eval)
 
-<a name="new_BcmathClass_new"></a>
 
-### new BcmathClass(scale)
+##### Parameters
 
-| Param | Default |
-| --- | --- |
-| scale | <code>10</code> | 
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| scale | `int`  | Decimal places | &nbsp; |
 
-<a name="BcmathClass+chain"></a>
 
-### bcmathClass.chain(number, scale) ⇒ <code>Chain</code>
+
+
+##### Returns
+
+
+- `BcmathClass`  
+
+
+
+#### new BcmathClass() 
+
+Bcmath
+
+
+
+
+
+
+##### Returns
+
+
+- `Void`
+
+
+
+#### BcmathClass.constructor(scale) 
+
+Constructor
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| scale | `int`  | Decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Void`
+
+
+
+#### BcmathClass.chain(number, scale) 
+
 Returns Chain object
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number | Number to start with |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+compare"></a>
 
-### bcmathClass.compare(left, right) ⇒ <code>int</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number to start with | &nbsp; |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### BcmathClass.compare(left, right) 
+
 Returns:
      -1 if left is lesser than right
      0 if left is equal to right
      1 if left is greater than right
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| left | Left operand |
-| right | Right operand |
 
-<a name="BcmathClass+pow"></a>
 
-### bcmathClass.pow(number, power) ⇒ <code>number</code> \| <code>\*</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| left | `string` `number` `BigInt`  | Left operand | &nbsp; |
+| right | `string` `number` `BigInt`  | Right operand | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `int`  
+
+
+
+#### BcmathClass.pow(number, power) 
+
 Number to be raised to a power
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number | Number |
-| power | Power |
 
-<a name="BcmathClass+round"></a>
 
-### bcmathClass.round(number, precision) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+| power | `int`  | Power | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `number`  
+
+
+
+#### BcmathClass.round(number, precision) 
+
 Round the number to the nearest round number
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| number | <code>0</code> | Number |
-| precision |  | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="BcmathClass+abs"></a>
 
-### bcmathClass.abs(number) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+| precision |  | Number of decimal places. Can be negative. Default: 0 | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.abs(number) 
+
 Returns the absolute value of the specified number
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param |
-| --- |
-| number | 
 
-<a name="BcmathClass+floor"></a>
 
-### bcmathClass.floor(number, precision) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.floor(number, precision) 
+
 Round the number down
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| number |  | Subject number |
-| precision | <code>0</code> | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="BcmathClass+ceil"></a>
 
-### bcmathClass.ceil(number, precision) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Subject number | &nbsp; |
+| precision |  | Number of decimal places. Can be negative. Default: 0 | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.ceil(number, precision) 
+
 Round the number up
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| number |  | Subject number |
-| precision | <code>0</code> | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="BcmathClass+mul"></a>
 
-### bcmathClass.mul(number, multiplier, scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Subject number | &nbsp; |
+| precision | `int`  | Number of decimal places. Can be negative. Default: 0 | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.mul(number, multiplier, scale) 
+
 Multiply
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number |  |
-| multiplier |  |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+div"></a>
 
-### bcmathClass.div(number, divisor, scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  |  | &nbsp; |
+| multiplier | `string` `number` `BigInt`  |  | &nbsp; |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.div(number, divisor, scale) 
+
 Divide
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number | Number |
-| divisor | Divisor |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+add"></a>
 
-### bcmathClass.add(left, right, scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+| divisor | `string` `number` `BigInt`  | Divisor | &nbsp; |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.add(left, right, scale) 
+
 Add two numbers
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| left | Left operand |
-| right | Right operand |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+mod"></a>
 
-### bcmathClass.mod(number, divisor) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| left | `string` `number` `BigInt`  | Left operand | &nbsp; |
+| right | `string` `number` `BigInt`  | Right operand | &nbsp; |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.mod(number, divisor) 
+
 Get the modulus
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number | Number |
-| divisor | Divisor |
 
-<a name="BcmathClass+sub"></a>
 
-### bcmathClass.sub(left, right, scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+| divisor |  | Divisor | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.sub(left, right, scale) 
+
 Substract right from left
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| left | Left operand |
-| right | Right operand |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+max"></a>
 
-### bcmathClass.max(scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| left |  | Left operand | &nbsp; |
+| right |  | Right operand | &nbsp; |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.max(scale) 
+
 Returns the highest number
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| ...numbers | Array of numbers |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+min"></a>
 
-### bcmathClass.min(scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| ...numbers |  | Array of numbers | &nbsp; |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.min(scale) 
+
 Returns the lowest number
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| ...numbers | Array of numbers |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+isBigInt"></a>
 
-### bcmathClass.isBigInt(number) ⇒ <code>boolean</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| ...numbers |  | Array of numbers | &nbsp; |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.isBigInt(number) 
+
 Check if the number fits in a signed BigInt
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number | Number |
 
-<a name="BcmathClass+isSafeBigInt"></a>
 
-### bcmathClass.isSafeBigInt(number) ⇒ <code>boolean</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `boolean`  
+
+
+
+#### BcmathClass.isSafeBigInt(number) 
+
 Check if the number is safe to use in Javascript BigInt
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number | Number |
 
-<a name="BcmathClass+generateDigitsOfPi"></a>
 
-### bcmathClass.generateDigitsOfPi() ⇒ <code>Generator.&lt;number&gt;</code>
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
-<a name="BcmathClass+pi"></a>
+##### Parameters
 
-### bcmathClass.pi(scale) ⇒ <code>string</code>
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `boolean`  
+
+
+
+#### BcmathClass.*generateDigitsOfPi() 
+
+
+
+
+
+
+
+
+##### Returns
+
+
+- `Generator.&lt;number&gt;`  
+
+
+
+#### BcmathClass.pi(scale) 
+
 Get π
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+piFormatted"></a>
 
-### bcmathClass.piFormatted(scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.piFormatted(scale) 
+
 π in a formatted string, up to 50 digits per line
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| scale | Number of decimal places |
 
-<a name="BcmathClass+sqrt"></a>
 
-### bcmathClass.sqrt(number, scale) ⇒ <code>string</code>
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.sqrt(number, scale) 
+
 Calculate square root
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param |
-| --- |
-| number | 
-| scale | 
 
-<a name="BcmathClass+neg"></a>
 
-### bcmathClass.neg(number)
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  |  | &nbsp; |
+| scale | `int`  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### BcmathClass.neg(number) 
+
 Multiply by -1
 
-**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Void`
+
+
+
+#### BcmathClass.eval(expr, variables) 
+
+Evaluate an expression
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| expr | `string`  | Expression, e.g 'x + y' | &nbsp; |
+| variables | `object`  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Void`
+
+
+
+#### trimZeroes(value) 
+
+Trims empty decimal places
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value |  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+
+### chain.js
+
+
+#### constructor(number, scale) 
+
+Constructor
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number | &nbsp; |
+| scale | `int`  | Number of decimal places (default: 10) | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Void`
+
+
+
+#### toJSON() 
+
+toJSON
+
+
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### scale(scale) 
+
+Set the scale of operations
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| scale | `int`  | Number of decimal places | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### compare(left, right) 
+
+Returns:
+     -1 if current value is lesser than the number
+     0 if left is equal to the number
+     1 if left is greater than the number
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| left |  | Left operand | &nbsp; |
+| right |  | Right operand | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `int`  
+
+
+
+#### round(precision) 
+
+Round value to the nearest round number
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| precision |  | Number of decimal places. Can be negative. Default: 0 | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### floor(precision) 
+
+Round the number down
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| precision |  | Number of decimal places. Can be negative. Default: 0 | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### ceil(precision) 
+
+Round the number up
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| precision |  | Number of decimal places. Can be negative. Default: 0 | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### pow(power) 
+
+Pow
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| power |  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### mul(value) 
+
+Multiply
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value |  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### div(divisor) 
+
+Divide value by a divisor
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| divisor |  | Divisor | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### sub(number) 
+
+Substract a number
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| number | `string` `number` `BigInt`  | Number to add | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### add(value) 
+
+Add a number
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| value |  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### max(numbers) 
+
+Returns the highest number
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| numbers | `string` `number` `BigInt`  | Array of numbers | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### min(numbers) 
+
+Returns the lowest number
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| numbers | `string` `number` `BigInt`  | Array of numbers | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### abs() 
+
+Returns the absolute value of the specified number
+
+
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
+#### done(plus) 
+
+Return the final value of the chain
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| plus |  | If true, positive number will be prepended by + sign. Default: false | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `string`  
+
+
+
+#### raw() 
+
+Get the raw value
+
+
+
+
+
+
+##### Returns
+
+
+-  
+
+
+
+
+*Documentation generated with [doxdox](https://github.com/neogeek/doxdox).*
 
 ## Development
 

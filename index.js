@@ -5,13 +5,22 @@ import {Parser} from "./parser.js";
 import {Chain} from "bcmath/chain.js";
 
 /**
- *
+ * Get a BcmathClass instance
+ * @param {int} scale Decimal places
+ * @returns {BcmathClass}
  */
-class BcmathClass {
+export function Bcmath(scale = 10) {
+    return new BcmathClass(10)
+}
+
+/**
+ * Bcmath
+ */
+export class BcmathClass {
 
     /**
-     *
-     * @param scale
+     * Constructor
+     * @param {int} scale Decimal places
      */
     constructor(scale = 10) {
         this._scale = scale
@@ -20,8 +29,8 @@ class BcmathClass {
 
     /**
      * Returns Chain object
-     * @param number Number to start with
-     * @param scale Number of decimal places
+     * @param {string|number|BigInt} number Number to start with
+     * @param {int} scale Number of decimal places
      * @returns {Chain}
      */
     chain(number, scale) {
@@ -33,8 +42,8 @@ class BcmathClass {
      -1 if left is lesser than right
      0 if left is equal to right
      1 if left is greater than right
-     * @param left Left operand
-     * @param right Right operand
+     * @param {string|number|BigInt} left Left operand
+     * @param {string|number|BigInt} right Right operand
      * @returns {int}
      */
     compare(left, right) {
@@ -44,8 +53,8 @@ class BcmathClass {
     /**
      *
      * Number to be raised to a power
-     * @param number Number
-     * @param power Power
+     * @param {string|number|BigInt} number Number
+     * @param {int} power Power
      * @returns {number|*}
      */
     pow(number, power) {
@@ -71,7 +80,7 @@ class BcmathClass {
 
     /**
      * Round the number to the nearest round number
-     * @param number Number
+     * @param {string|number|BigInt} number Number
      * @param precision Number of decimal places. Can be negative. Default: 0
      * @returns {string}
      */
@@ -86,7 +95,7 @@ class BcmathClass {
 
     /**
      * Returns the absolute value of the specified number
-     * @param number
+     * @param {string|number|BigInt} number
      * @returns {string}
      */
     abs(number) {
@@ -99,7 +108,7 @@ class BcmathClass {
 
     /**
      * Round the number down
-     * @param number Subject number
+     * @param {string|number|BigInt} number Subject number
      * @param precision Number of decimal places. Can be negative. Default: 0
      * @returns {string}
      */
@@ -114,8 +123,8 @@ class BcmathClass {
 
     /**
      * Round the number up
-     * @param number Subject number
-     * @param precision Number of decimal places. Can be negative. Default: 0
+     * @param {string|number|BigInt} number Subject number
+     * @param {int} precision Number of decimal places. Can be negative. Default: 0
      * @returns {string}
      */
 
@@ -133,9 +142,9 @@ class BcmathClass {
 
     /**
      * Multiply
-     * @param number
-     * @param multiplier
-     * @param scale Number of decimal places
+     * @param {string|number|BigInt} number
+     * @param {string|number|BigInt} multiplier
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
 
@@ -145,9 +154,9 @@ class BcmathClass {
 
     /**
      * Divide
-     * @param number Number
-     * @param divisor Divisor
-     * @param scale Number of decimal places
+     * @param {string|number|BigInt} number Number
+     * @param {string|number|BigInt} divisor Divisor
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
 
@@ -157,9 +166,9 @@ class BcmathClass {
 
     /**
      * Add two numbers
-     * @param left Left operand
-     * @param right Right operand
-     * @param scale Number of decimal places
+     * @param {string|number|BigInt} left Left operand
+     * @param {string|number|BigInt} right Right operand
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
 
@@ -169,7 +178,7 @@ class BcmathClass {
 
     /**
      * Get the modulus
-     * @param number Number
+     * @param {string|number|BigInt} number Number
      * @param divisor Divisor
      * @returns {string}
      */
@@ -183,7 +192,7 @@ class BcmathClass {
      * Substract right from left
      * @param left Left operand
      * @param right Right operand
-     * @param scale Number of decimal places
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
 
@@ -195,7 +204,7 @@ class BcmathClass {
     /**
      * Returns the highest number
      * @param ...numbers Array of numbers
-     * @param scale Number of decimal places
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
 
@@ -212,7 +221,7 @@ class BcmathClass {
     /**
      * Returns the lowest number
      * @param ...numbers Array of numbers
-     * @param scale Number of decimal places
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
 
@@ -228,7 +237,7 @@ class BcmathClass {
 
     /**
      * Check if the number fits in a signed BigInt
-     * @param number Number
+     * @param {string|number|BigInt} number Number
      * @returns {boolean}
      */
 
@@ -238,7 +247,7 @@ class BcmathClass {
 
     /**
      * Check if the number is safe to use in Javascript BigInt
-     * @param number Number
+     * @param {string|number|BigInt} number Number
      * @returns {boolean}
      */
 
@@ -268,7 +277,7 @@ class BcmathClass {
 
     /**
      * Get π
-     * @param scale Number of decimal places
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
 
@@ -287,7 +296,7 @@ class BcmathClass {
 
     /**
      * π in a formatted string, up to 50 digits per line
-     * @param scale Number of decimal places
+     * @param {int} scale Number of decimal places
      * @returns {string}
      */
     piFormatted(scale) {
@@ -297,8 +306,8 @@ class BcmathClass {
 
     /**
      * Calculate square root
-     * @param number
-     * @param scale
+     * @param {string|number|BigInt} number
+     * @param {int} scale
      * @returns {string}
      */
     sqrt(number) {
@@ -311,7 +320,7 @@ class BcmathClass {
 
     /**
      * Multiply by -1
-     * @param number Number
+     * @param {string|number|BigInt} number Number
      */
 
     neg(number) {
@@ -319,9 +328,9 @@ class BcmathClass {
     }
 
     /**
-     *
-     * @param expr
-     * @param variables
+     * Evaluate an expression
+     * @param {string} expr Expression, e.g 'x + y'
+     * @param {object} variables
      */
     eval(expr, variables = {}) {
         const parser = new Parser(this)
@@ -345,4 +354,3 @@ export function trimZeroes(value) {
     return split.join('.')
 }
 
-export const Bcmath = BcmathClass

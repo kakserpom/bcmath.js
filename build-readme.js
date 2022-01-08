@@ -1,12 +1,15 @@
 import fs from 'node:fs'
 import {exec} from 'node:child_process'
 import {promisify} from 'node:util'
+
 const Exec = promisify(exec)
 
 async function buildReadme() {
     const replacements = {}
     replacements.EXAMPLES = await fs.promises.readFile('examples.js')
-    replacements.API = (await Exec('jsdoc2md index.js')).stdout.trim()
+    replacements.API = (await Exec('doxdox index.js chain.js --layout markdown')).stdout
+        .trim()
+        .replace(/.*?(\n###)/s, '###')
 
     const template = (await fs.promises.readFile('README.md.template')).toString()
 
