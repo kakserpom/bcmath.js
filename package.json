@@ -13,8 +13,11 @@
   "dependencies": {
     "locutus": "^2.0.15"
   },
+  "homepage": "https://github.com/kakserpom/bcmath.js",
   "files": [
     "index.js",
+    "chain.js",
+    "parser.js",
     "README.md"
   ]
 }
