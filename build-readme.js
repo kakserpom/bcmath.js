@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import fs from 'node:fs'
 import {exec} from 'node:child_process'
 import {promisify} from 'node:util'
