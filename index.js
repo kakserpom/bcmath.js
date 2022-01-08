@@ -4,11 +4,10 @@ const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 import {Parser} from "./parser.js";
 import {Chain} from "bcmath/chain.js";
 
-
 /**
  *
  */
-class Math {
+class BcmathClass {
 
     /**
      *
@@ -346,4 +345,4 @@ export function trimZeroes(value) {
     return split.join('.')
 }
 
-export const Bcmath = Math
+export const Bcmath = BcmathClass

@@ -1,8 +1,9 @@
 import {Bcmath, trimZeroes} from "bcmath";
 import * as bc_pkg from "locutus/php/bc/index.js";
+
 const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 
-class Chain {
+class ChainClass {
 
     /**
      * Constructor
@@ -188,3 +189,5 @@ class Chain {
         return this.value
     }
 }
+
+export const Chain = ChainClass

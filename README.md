@@ -52,7 +52,7 @@ console.log(math.sqrt(2))
 ## Classes
 
 <dl>
-<dt><a href="#Math">Math</a></dt>
+<dt><a href="#BcmathClass">BcmathClass</a></dt>
 <dd></dd>
 </dl>
 
@@ -64,136 +64,136 @@ console.log(math.sqrt(2))
 </dd>
 </dl>
 
-<a name="Math"></a>
+<a name="BcmathClass"></a>
 
-## Math
+## BcmathClass
 **Kind**: global class  
 
-* [Math](#Math)
-    * [new Math(scale)](#new_Math_new)
-    * [.chain(number, scale)](#Math+chain) ⇒ <code>Chain</code>
-    * [.compare(left, right)](#Math+compare) ⇒ <code>int</code>
-    * [.pow(number, power)](#Math+pow) ⇒ <code>number</code> \| <code>\*</code>
-    * [.round(number, precision)](#Math+round) ⇒ <code>string</code>
-    * [.abs(number)](#Math+abs) ⇒ <code>string</code>
-    * [.floor(number, precision)](#Math+floor) ⇒ <code>string</code>
-    * [.ceil(number, precision)](#Math+ceil) ⇒ <code>string</code>
-    * [.mul(number, multiplier, scale)](#Math+mul) ⇒ <code>string</code>
-    * [.div(number, divisor, scale)](#Math+div) ⇒ <code>string</code>
-    * [.add(left, right, scale)](#Math+add) ⇒ <code>string</code>
-    * [.mod(number, divisor)](#Math+mod) ⇒ <code>string</code>
-    * [.sub(left, right, scale)](#Math+sub) ⇒ <code>string</code>
-    * [.max(scale)](#Math+max) ⇒ <code>string</code>
-    * [.min(scale)](#Math+min) ⇒ <code>string</code>
-    * [.isBigInt(number)](#Math+isBigInt) ⇒ <code>boolean</code>
-    * [.isSafeBigInt(number)](#Math+isSafeBigInt) ⇒ <code>boolean</code>
-    * [.generateDigitsOfPi()](#Math+generateDigitsOfPi) ⇒ <code>Generator.&lt;number&gt;</code>
-    * [.pi(scale)](#Math+pi) ⇒ <code>string</code>
-    * [.piFormatted(scale)](#Math+piFormatted) ⇒ <code>string</code>
-    * [.sqrt(number, scale)](#Math+sqrt) ⇒ <code>string</code>
-    * [.neg(number)](#Math+neg)
-    * [.eval(expr, variables)](#Math+eval)
+* [BcmathClass](#BcmathClass)
+    * [new BcmathClass(scale)](#new_BcmathClass_new)
+    * [.chain(number, scale)](#BcmathClass+chain) ⇒ <code>Chain</code>
+    * [.compare(left, right)](#BcmathClass+compare) ⇒ <code>int</code>
+    * [.pow(number, power)](#BcmathClass+pow) ⇒ <code>number</code> \| <code>\*</code>
+    * [.round(number, precision)](#BcmathClass+round) ⇒ <code>string</code>
+    * [.abs(number)](#BcmathClass+abs) ⇒ <code>string</code>
+    * [.floor(number, precision)](#BcmathClass+floor) ⇒ <code>string</code>
+    * [.ceil(number, precision)](#BcmathClass+ceil) ⇒ <code>string</code>
+    * [.mul(number, multiplier, scale)](#BcmathClass+mul) ⇒ <code>string</code>
+    * [.div(number, divisor, scale)](#BcmathClass+div) ⇒ <code>string</code>
+    * [.add(left, right, scale)](#BcmathClass+add) ⇒ <code>string</code>
+    * [.mod(number, divisor)](#BcmathClass+mod) ⇒ <code>string</code>
+    * [.sub(left, right, scale)](#BcmathClass+sub) ⇒ <code>string</code>
+    * [.max(scale)](#BcmathClass+max) ⇒ <code>string</code>
+    * [.min(scale)](#BcmathClass+min) ⇒ <code>string</code>
+    * [.isBigInt(number)](#BcmathClass+isBigInt) ⇒ <code>boolean</code>
+    * [.isSafeBigInt(number)](#BcmathClass+isSafeBigInt) ⇒ <code>boolean</code>
+    * [.generateDigitsOfPi()](#BcmathClass+generateDigitsOfPi) ⇒ <code>Generator.&lt;number&gt;</code>
+    * [.pi(scale)](#BcmathClass+pi) ⇒ <code>string</code>
+    * [.piFormatted(scale)](#BcmathClass+piFormatted) ⇒ <code>string</code>
+    * [.sqrt(number, scale)](#BcmathClass+sqrt) ⇒ <code>string</code>
+    * [.neg(number)](#BcmathClass+neg)
+    * [.eval(expr, variables)](#BcmathClass+eval)
 
-<a name="new_Math_new"></a>
+<a name="new_BcmathClass_new"></a>
 
-### new Math(scale)
+### new BcmathClass(scale)
 
 | Param | Default |
 | --- | --- |
 | scale | <code>10</code> | 
 
-<a name="Math+chain"></a>
+<a name="BcmathClass+chain"></a>
 
-### math.chain(number, scale) ⇒ <code>Chain</code>
+### bcmathClass.chain(number, scale) ⇒ <code>Chain</code>
 Returns Chain object
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | number | Number to start with |
 | scale | Number of decimal places |
 
-<a name="Math+compare"></a>
+<a name="BcmathClass+compare"></a>
 
-### math.compare(left, right) ⇒ <code>int</code>
+### bcmathClass.compare(left, right) ⇒ <code>int</code>
 Returns:
      -1 if left is lesser than right
      0 if left is equal to right
      1 if left is greater than right
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | left | Left operand |
 | right | Right operand |
 
-<a name="Math+pow"></a>
+<a name="BcmathClass+pow"></a>
 
-### math.pow(number, power) ⇒ <code>number</code> \| <code>\*</code>
+### bcmathClass.pow(number, power) ⇒ <code>number</code> \| <code>\*</code>
 Number to be raised to a power
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 | power | Power |
 
-<a name="Math+round"></a>
+<a name="BcmathClass+round"></a>
 
-### math.round(number, precision) ⇒ <code>string</code>
+### bcmathClass.round(number, precision) ⇒ <code>string</code>
 Round the number to the nearest round number
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Default | Description |
 | --- | --- | --- |
 | number | <code>0</code> | Number |
 | precision |  | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="Math+abs"></a>
+<a name="BcmathClass+abs"></a>
 
-### math.abs(number) ⇒ <code>string</code>
+### bcmathClass.abs(number) ⇒ <code>string</code>
 Returns the absolute value of the specified number
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param |
 | --- |
 | number | 
 
-<a name="Math+floor"></a>
+<a name="BcmathClass+floor"></a>
 
-### math.floor(number, precision) ⇒ <code>string</code>
+### bcmathClass.floor(number, precision) ⇒ <code>string</code>
 Round the number down
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Default | Description |
 | --- | --- | --- |
 | number |  | Subject number |
 | precision | <code>0</code> | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="Math+ceil"></a>
+<a name="BcmathClass+ceil"></a>
 
-### math.ceil(number, precision) ⇒ <code>string</code>
+### bcmathClass.ceil(number, precision) ⇒ <code>string</code>
 Round the number up
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Default | Description |
 | --- | --- | --- |
 | number |  | Subject number |
 | precision | <code>0</code> | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="Math+mul"></a>
+<a name="BcmathClass+mul"></a>
 
-### math.mul(number, multiplier, scale) ⇒ <code>string</code>
+### bcmathClass.mul(number, multiplier, scale) ⇒ <code>string</code>
 Multiply
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
@@ -201,12 +201,12 @@ Multiply
 | multiplier |  |
 | scale | Number of decimal places |
 
-<a name="Math+div"></a>
+<a name="BcmathClass+div"></a>
 
-### math.div(number, divisor, scale) ⇒ <code>string</code>
+### bcmathClass.div(number, divisor, scale) ⇒ <code>string</code>
 Divide
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
@@ -214,12 +214,12 @@ Divide
 | divisor | Divisor |
 | scale | Number of decimal places |
 
-<a name="Math+add"></a>
+<a name="BcmathClass+add"></a>
 
-### math.add(left, right, scale) ⇒ <code>string</code>
+### bcmathClass.add(left, right, scale) ⇒ <code>string</code>
 Add two numbers
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
@@ -227,24 +227,24 @@ Add two numbers
 | right | Right operand |
 | scale | Number of decimal places |
 
-<a name="Math+mod"></a>
+<a name="BcmathClass+mod"></a>
 
-### math.mod(number, divisor) ⇒ <code>string</code>
+### bcmathClass.mod(number, divisor) ⇒ <code>string</code>
 Get the modulus
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 | divisor | Divisor |
 
-<a name="Math+sub"></a>
+<a name="BcmathClass+sub"></a>
 
-### math.sub(left, right, scale) ⇒ <code>string</code>
+### bcmathClass.sub(left, right, scale) ⇒ <code>string</code>
 Substract right from left
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
@@ -252,121 +252,98 @@ Substract right from left
 | right | Right operand |
 | scale | Number of decimal places |
 
-<a name="Math+max"></a>
+<a name="BcmathClass+max"></a>
 
-### math.max(scale) ⇒ <code>string</code>
+### bcmathClass.max(scale) ⇒ <code>string</code>
 Returns the highest number
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | ...numbers | Array of numbers |
 | scale | Number of decimal places |
 
-<a name="Math+min"></a>
+<a name="BcmathClass+min"></a>
 
-### math.min(scale) ⇒ <code>string</code>
+### bcmathClass.min(scale) ⇒ <code>string</code>
 Returns the lowest number
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | ...numbers | Array of numbers |
 | scale | Number of decimal places |
 
-<a name="Math+isBigInt"></a>
+<a name="BcmathClass+isBigInt"></a>
 
-### math.isBigInt(number) ⇒ <code>boolean</code>
+### bcmathClass.isBigInt(number) ⇒ <code>boolean</code>
 Check if the number fits in a signed BigInt
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 
-<a name="Math+isSafeBigInt"></a>
+<a name="BcmathClass+isSafeBigInt"></a>
 
-### math.isSafeBigInt(number) ⇒ <code>boolean</code>
+### bcmathClass.isSafeBigInt(number) ⇒ <code>boolean</code>
 Check if the number is safe to use in Javascript BigInt
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 
-<a name="Math+generateDigitsOfPi"></a>
+<a name="BcmathClass+generateDigitsOfPi"></a>
 
-### math.generateDigitsOfPi() ⇒ <code>Generator.&lt;number&gt;</code>
-**Kind**: instance method of [<code>Math</code>](#Math)  
-<a name="Math+pi"></a>
+### bcmathClass.generateDigitsOfPi() ⇒ <code>Generator.&lt;number&gt;</code>
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
+<a name="BcmathClass+pi"></a>
 
-### math.pi(scale) ⇒ <code>string</code>
+### bcmathClass.pi(scale) ⇒ <code>string</code>
 Get π
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | scale | Number of decimal places |
 
-<a name="Math+piFormatted"></a>
+<a name="BcmathClass+piFormatted"></a>
 
-### math.piFormatted(scale) ⇒ <code>string</code>
+### bcmathClass.piFormatted(scale) ⇒ <code>string</code>
 π in a formatted string, up to 50 digits per line
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param | Description |
 | --- | --- |
 | scale | Number of decimal places |
 
-<a name="Math+sqrt"></a>
+<a name="BcmathClass+sqrt"></a>
 
-### math.sqrt(number, scale) ⇒ <code>string</code>
+### bcmathClass.sqrt(number, scale) ⇒ <code>string</code>
 Calculate square root
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
 | Param |
 | --- |
 | number | 
 | scale | 
 
-<a name="Math+neg"></a>
+<a name="BcmathClass+neg"></a>
 
-### math.neg(number)
+### bcmathClass.neg(number)
 Multiply by -1
 
-**Kind**: instance method of [<code>Math</code>](#Math)  
+**Kind**: instance method of [<code>BcmathClass</code>](#BcmathClass)  
 
-| Param | Description |
-| --- | --- |
-| number | Number |
-
-<a name="Math+eval"></a>
-
-### math.eval(expr, variables)
-**Kind**: instance method of [<code>Math</code>](#Math)  
-
-| Param |
-| --- |
-| expr | 
-| variables | 
-
-<a name="trimZeroes"></a>
-
-## trimZeroes(value) ⇒ <code>string</code>
-Trims empty decimal places
-
-**Kind**: global function  
-
-| Param |
-| --- |
-| value |
+| Param
 
 ## Development
 
