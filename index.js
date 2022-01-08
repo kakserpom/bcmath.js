@@ -1,4 +1,5 @@
 import * as bc_pkg from "locutus/php/bc/index.js";
+
 const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 import {Parser} from "./parser.js";
 import {Chain} from "bcmath/chain.js";
@@ -7,7 +8,7 @@ import {Chain} from "bcmath/chain.js";
 /**
  *
  */
-export class Bcmath {
+class Math {
 
     /**
      *
@@ -344,3 +345,5 @@ export function trimZeroes(value) {
     }
     return split.join('.')
 }
+
+export const Bcmath = Math

@@ -15,7 +15,8 @@ bcmath
 
 ## Examples
 ```
-import * as math from 'bcmath'
+import {Bcmath} from 'bcmath'
+const math  = new Bcmath(20)
 
 console.log(0.1 + 0.2 + 0.3)
 // 0.6000000000000001 :-(
@@ -23,11 +24,13 @@ console.log(0.1 + 0.2 + 0.3)
 console.log(math.chain(0.1).add(0.2).add(0.3).done())
 // 0.6 :-)
 
+console.log(math.eval('x ^ (y + 5)', {x: 2, y: 3}))
+// 256
+
 console.log(math.pow(2, 4096).length)
 // 1234
 
 const n = math.chain(0.15, 50).pow(-10)
-
 console.log(n.done())
 // 173415299.15832613592101475046148114277972531287574726074779
 
@@ -37,195 +40,160 @@ console.log(n.round(3).done())
 console.log(n.round(-3).done())
 //173415000
 
-console.log(math.max([1, 2, 3.61, 3.62], 1))
-// 3.61   (scale is 1
+console.log(math.max(1, 2, 3.62, 3.61))
+// 3.62
 
 console.log(math.pi(50))
 // 3.14159265358979323846264338327950288419716939937510
+
+console.log(math.sqrt(2))
+// 1.41421568627450980392
 ```
-## API
-### Classes
+## Classes
 
 <dl>
-<dt><a href="#Chain">Chain</a></dt>
-<dd><p>Chain</p>
-</dd>
+<dt><a href="#Math">Math</a></dt>
+<dd></dd>
 </dl>
 
-### Functions
+## Functions
 
 <dl>
 <dt><a href="#trimZeroes">trimZeroes(value)</a> ⇒ <code>string</code></dt>
 <dd><p>Trims empty decimal places</p>
 </dd>
-<dt><a href="#chain">chain(number, scale)</a> ⇒ <code><a href="#Chain">Chain</a></code></dt>
-<dd><p>Returns Chain object</p>
-</dd>
-<dt><a href="#compare">compare(left, right)</a> ⇒ <code>int</code></dt>
-<dd><p>Returns:
- -1 if left is lesser than right
- 0 if left is equal to right
- 1 if left is greater than right</p>
-</dd>
-<dt><a href="#pow">pow(number, power, scale)</a> ⇒ <code>number</code> | <code>*</code></dt>
-<dd><p>Number to be raised to a power</p>
-</dd>
-<dt><a href="#round">round(number, precision)</a> ⇒ <code>string</code></dt>
-<dd><p>Round the number to the nearest round number</p>
-</dd>
-<dt><a href="#abs">abs(number)</a> ⇒ <code>string</code></dt>
-<dd><p>Returns the absolute value of the specified number</p>
-</dd>
-<dt><a href="#floor">floor(number, precision)</a> ⇒ <code>string</code></dt>
-<dd><p>Round the number down</p>
-</dd>
-<dt><a href="#ceil">ceil(number, precision)</a> ⇒ <code>string</code></dt>
-<dd><p>Round the number up</p>
-</dd>
-<dt><a href="#multiply">multiply(number, multiplier, scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Multiply</p>
-</dd>
-<dt><a href="#divide">divide(number, divisor, scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Divide</p>
-</dd>
-<dt><a href="#add">add(left, right, scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Add two numbers</p>
-</dd>
-<dt><a href="#mod">mod(number, divisor)</a> ⇒ <code>string</code></dt>
-<dd><p>Get the modulus</p>
-</dd>
-<dt><a href="#substract">substract(left, right, scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Substract right from left</p>
-</dd>
-<dt><a href="#max">max(numbers, scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Returns the highest number</p>
-</dd>
-<dt><a href="#min">min(numbers, scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Returns the lowest number</p>
-</dd>
-<dt><a href="#isBigInt">isBigInt(number)</a> ⇒ <code>boolean</code></dt>
-<dd><p>Check if the number fits in a signed BigInt</p>
-</dd>
-<dt><a href="#isSafeBigInt">isSafeBigInt(number)</a> ⇒ <code>boolean</code></dt>
-<dd><p>Check if the number is safe to use in Javascript BigInt</p>
-</dd>
-<dt><a href="#generateDigitsOfPi">generateDigitsOfPi()</a> ⇒ <code>Generator.&lt;number&gt;</code></dt>
-<dd></dd>
-<dt><a href="#pi">pi(scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Get π</p>
-</dd>
-<dt><a href="#piFormatted">piFormatted(scale)</a> ⇒ <code>string</code></dt>
-<dd><p>π in a formatted string, up to 50 digits per line</p>
-</dd>
-<dt><a href="#sqrt">sqrt(number, scale)</a> ⇒ <code>string</code></dt>
-<dd><p>Calculate square root</p>
-</dd>
 </dl>
 
-<a name="trimZeroes"></a>
+<a name="Math"></a>
 
-### trimZeroes(value) ⇒ <code>string</code>
-Trims empty decimal places
+## Math
+**Kind**: global class  
 
-**Kind**: global function  
+* [Math](#Math)
+    * [new Math(scale)](#new_Math_new)
+    * [.chain(number, scale)](#Math+chain) ⇒ <code>Chain</code>
+    * [.compare(left, right)](#Math+compare) ⇒ <code>int</code>
+    * [.pow(number, power)](#Math+pow) ⇒ <code>number</code> \| <code>\*</code>
+    * [.round(number, precision)](#Math+round) ⇒ <code>string</code>
+    * [.abs(number)](#Math+abs) ⇒ <code>string</code>
+    * [.floor(number, precision)](#Math+floor) ⇒ <code>string</code>
+    * [.ceil(number, precision)](#Math+ceil) ⇒ <code>string</code>
+    * [.mul(number, multiplier, scale)](#Math+mul) ⇒ <code>string</code>
+    * [.div(number, divisor, scale)](#Math+div) ⇒ <code>string</code>
+    * [.add(left, right, scale)](#Math+add) ⇒ <code>string</code>
+    * [.mod(number, divisor)](#Math+mod) ⇒ <code>string</code>
+    * [.sub(left, right, scale)](#Math+sub) ⇒ <code>string</code>
+    * [.max(scale)](#Math+max) ⇒ <code>string</code>
+    * [.min(scale)](#Math+min) ⇒ <code>string</code>
+    * [.isBigInt(number)](#Math+isBigInt) ⇒ <code>boolean</code>
+    * [.isSafeBigInt(number)](#Math+isSafeBigInt) ⇒ <code>boolean</code>
+    * [.generateDigitsOfPi()](#Math+generateDigitsOfPi) ⇒ <code>Generator.&lt;number&gt;</code>
+    * [.pi(scale)](#Math+pi) ⇒ <code>string</code>
+    * [.piFormatted(scale)](#Math+piFormatted) ⇒ <code>string</code>
+    * [.sqrt(number, scale)](#Math+sqrt) ⇒ <code>string</code>
+    * [.neg(number)](#Math+neg)
+    * [.eval(expr, variables)](#Math+eval)
 
-| Param |
-| --- |
-| value | 
+<a name="new_Math_new"></a>
 
-<a name="chain"></a>
+### new Math(scale)
 
-### chain(number, scale) ⇒ [<code>Chain</code>](#Chain)
+| Param | Default |
+| --- | --- |
+| scale | <code>10</code> | 
+
+<a name="Math+chain"></a>
+
+### math.chain(number, scale) ⇒ <code>Chain</code>
 Returns Chain object
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | number | Number to start with |
 | scale | Number of decimal places |
 
-<a name="compare"></a>
+<a name="Math+compare"></a>
 
-### compare(left, right) ⇒ <code>int</code>
+### math.compare(left, right) ⇒ <code>int</code>
 Returns:
- -1 if left is lesser than right
- 0 if left is equal to right
- 1 if left is greater than right
+     -1 if left is lesser than right
+     0 if left is equal to right
+     1 if left is greater than right
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | left | Left operand |
 | right | Right operand |
 
-<a name="pow"></a>
+<a name="Math+pow"></a>
 
-### pow(number, power, scale) ⇒ <code>number</code> \| <code>\*</code>
+### math.pow(number, power) ⇒ <code>number</code> \| <code>\*</code>
 Number to be raised to a power
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 | power | Power |
-| scale | Number of decimal places |
 
-<a name="round"></a>
+<a name="Math+round"></a>
 
-### round(number, precision) ⇒ <code>string</code>
+### math.round(number, precision) ⇒ <code>string</code>
 Round the number to the nearest round number
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
-| Param | Description |
-| --- | --- |
-| number | Number |
-| precision | Number of decimal places. Can be negative. Default: 0 |
+| Param | Default | Description |
+| --- | --- | --- |
+| number | <code>0</code> | Number |
+| precision |  | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="abs"></a>
+<a name="Math+abs"></a>
 
-### abs(number) ⇒ <code>string</code>
+### math.abs(number) ⇒ <code>string</code>
 Returns the absolute value of the specified number
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param |
 | --- |
 | number | 
 
-<a name="floor"></a>
+<a name="Math+floor"></a>
 
-### floor(number, precision) ⇒ <code>string</code>
+### math.floor(number, precision) ⇒ <code>string</code>
 Round the number down
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
-| Param | Description |
-| --- | --- |
-| number | Subject number |
-| precision | Number of decimal places. Can be negative. Default: 0 |
+| Param | Default | Description |
+| --- | --- | --- |
+| number |  | Subject number |
+| precision | <code>0</code> | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="ceil"></a>
+<a name="Math+ceil"></a>
 
-### ceil(number, precision) ⇒ <code>string</code>
+### math.ceil(number, precision) ⇒ <code>string</code>
 Round the number up
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
-| Param | Description |
-| --- | --- |
-| number | Subject number |
-| precision | Number of decimal places. Can be negative. Default: 0 |
+| Param | Default | Description |
+| --- | --- | --- |
+| number |  | Subject number |
+| precision | <code>0</code> | Number of decimal places. Can be negative. Default: 0 |
 
-<a name="multiply"></a>
+<a name="Math+mul"></a>
 
-### multiply(number, multiplier, scale) ⇒ <code>string</code>
+### math.mul(number, multiplier, scale) ⇒ <code>string</code>
 Multiply
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
@@ -233,12 +201,12 @@ Multiply
 | multiplier |  |
 | scale | Number of decimal places |
 
-<a name="divide"></a>
+<a name="Math+div"></a>
 
-### divide(number, divisor, scale) ⇒ <code>string</code>
+### math.div(number, divisor, scale) ⇒ <code>string</code>
 Divide
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
@@ -246,12 +214,12 @@ Divide
 | divisor | Divisor |
 | scale | Number of decimal places |
 
-<a name="add"></a>
+<a name="Math+add"></a>
 
-### add(left, right, scale) ⇒ <code>string</code>
+### math.add(left, right, scale) ⇒ <code>string</code>
 Add two numbers
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
@@ -259,24 +227,24 @@ Add two numbers
 | right | Right operand |
 | scale | Number of decimal places |
 
-<a name="mod"></a>
+<a name="Math+mod"></a>
 
-### mod(number, divisor) ⇒ <code>string</code>
+### math.mod(number, divisor) ⇒ <code>string</code>
 Get the modulus
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 | divisor | Divisor |
 
-<a name="substract"></a>
+<a name="Math+sub"></a>
 
-### substract(left, right, scale) ⇒ <code>string</code>
+### math.sub(left, right, scale) ⇒ <code>string</code>
 Substract right from left
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
@@ -284,89 +252,121 @@ Substract right from left
 | right | Right operand |
 | scale | Number of decimal places |
 
-<a name="max"></a>
+<a name="Math+max"></a>
 
-### max(numbers, scale) ⇒ <code>string</code>
+### math.max(scale) ⇒ <code>string</code>
 Returns the highest number
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
-| numbers | Array of numbers |
+| ...numbers | Array of numbers |
 | scale | Number of decimal places |
 
-<a name="min"></a>
+<a name="Math+min"></a>
 
-### min(numbers, scale) ⇒ <code>string</code>
+### math.min(scale) ⇒ <code>string</code>
 Returns the lowest number
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
-| numbers | Array of numbers |
+| ...numbers | Array of numbers |
 | scale | Number of decimal places |
 
-<a name="isBigInt"></a>
+<a name="Math+isBigInt"></a>
 
-### isBigInt(number) ⇒ <code>boolean</code>
+### math.isBigInt(number) ⇒ <code>boolean</code>
 Check if the number fits in a signed BigInt
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 
-<a name="isSafeBigInt"></a>
+<a name="Math+isSafeBigInt"></a>
 
-### isSafeBigInt(number) ⇒ <code>boolean</code>
+### math.isSafeBigInt(number) ⇒ <code>boolean</code>
 Check if the number is safe to use in Javascript BigInt
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | number | Number |
 
-<a name="generateDigitsOfPi"></a>
+<a name="Math+generateDigitsOfPi"></a>
 
-### generateDigitsOfPi() ⇒ <code>Generator.&lt;number&gt;</code>
-**Kind**: global function  
-<a name="pi"></a>
+### math.generateDigitsOfPi() ⇒ <code>Generator.&lt;number&gt;</code>
+**Kind**: instance method of [<code>Math</code>](#Math)  
+<a name="Math+pi"></a>
 
-### pi(scale) ⇒ <code>string</code>
+### math.pi(scale) ⇒ <code>string</code>
 Get π
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | scale | Number of decimal places |
 
-<a name="piFormatted"></a>
+<a name="Math+piFormatted"></a>
 
-### piFormatted(scale) ⇒ <code>string</code>
+### math.piFormatted(scale) ⇒ <code>string</code>
 π in a formatted string, up to 50 digits per line
 
-**Kind**: global function  
+**Kind**: instance method of [<code>Math</code>](#Math)  
 
 | Param | Description |
 | --- | --- |
 | scale | Number of decimal places |
 
-<a name="sqrt"></a>
+<a name="Math+sqrt"></a>
 
-### sqrt(number, scale) ⇒ <code>string</code>
+### math.sqrt(number, scale) ⇒ <code>string</code>
 Calculate square root
+
+**Kind**: instance method of [<code>Math</code>](#Math)  
+
+| Param |
+| --- |
+| number | 
+| scale | 
+
+<a name="Math+neg"></a>
+
+### math.neg(number)
+Multiply by -1
+
+**Kind**: instance method of [<code>Math</code>](#Math)  
+
+| Param | Description |
+| --- | --- |
+| number | Number |
+
+<a name="Math+eval"></a>
+
+### math.eval(expr, variables)
+**Kind**: instance method of [<code>Math</code>](#Math)  
+
+| Param |
+| --- |
+| expr | 
+| variables | 
+
+<a name="trimZeroes"></a>
+
+## trimZeroes(value) ⇒ <code>string</code>
+Trims empty decimal places
 
 **Kind**: global function  
 
 | Param |
 | --- |
-| number | 
-| scale |
+| value |
 
 ## Development
 

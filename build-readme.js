@@ -6,7 +6,7 @@ const Exec = promisify(exec)
 async function buildReadme() {
     const replacements = {}
     replacements.EXAMPLES = await fs.promises.readFile('examples.js')
-    replacements.API = (await Exec('jsdoc2md -d 3 index.js')).stdout.trim()
+    replacements.API = (await Exec('jsdoc2md index.js')).stdout.trim()
 
     const template = (await fs.promises.readFile('README.md.template')).toString()
 
