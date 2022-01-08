@@ -1,6 +1,6 @@
 {
   "name": "bcmath",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "type": "module",
   "description": "Arbitrary-length arithmetics API based on locutus/php/bcmath",
   "main": "index.js",
