@@ -5,12 +5,6 @@ import {promisify} from 'node:util'
 const Exec = promisify(exec)
 
 async function build() {
-    const env = process.env
-    env.tag = (await Exec('git describe --tags $(git rev-list --tags --max-count=1)\n')).stdout.trim()
-    try {
-        await Exec('npm version $tag', {env})
-    } catch (e) {}
-
     const replacements = {}
     replacements.EXAMPLES = await fs.promises.readFile('examples.js')
     replacements.API = (await Exec('jsdoc2md -d 3 index.js')).stdout
