@@ -10,7 +10,7 @@ import {Chain} from "bcmath/chain.js";
  * @returns {BcmathClass}
  */
 export function Bcmath(scale = 10) {
-    return new BcmathClass(10)
+    return new BcmathClass(scale)
 }
 
 /**
@@ -25,8 +25,7 @@ export class BcmathClass {
     constructor(scale = 10) {
         this._scale = scale
     }
-
-
+    
     /**
      * Returns Chain object
      * @param {string|number|BigInt} number Number to start with
@@ -84,7 +83,7 @@ export class BcmathClass {
      * @param precision Number of decimal places. Can be negative. Default: 0
      * @returns {string}
      */
-    round(number = 0, precision) {
+    round(number = 0, precision = 0) {
         if (precision >= 0) {
             return trimZeroes(bcround(number, precision))
         }

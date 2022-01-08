@@ -666,7 +666,7 @@ Trims empty decimal places
 ### chain.js
 
 
-#### constructor(number, scale) 
+#### Chain.constructor(number, scale) 
 
 Constructor
 
@@ -690,7 +690,7 @@ Constructor
 
 
 
-#### toJSON() 
+#### Chain.toJSON() 
 
 toJSON
 
@@ -706,7 +706,7 @@ toJSON
 
 
 
-#### scale(scale) 
+#### Chain.scale(scale) 
 
 Set the scale of operations
 
@@ -729,7 +729,7 @@ Set the scale of operations
 
 
 
-#### compare(left, right) 
+#### Chain.compare(left, right) 
 
 Returns:
      -1 if current value is lesser than the number
@@ -756,7 +756,7 @@ Returns:
 
 
 
-#### round(precision) 
+#### Chain.round(precision) 
 
 Round value to the nearest round number
 
@@ -779,7 +779,7 @@ Round value to the nearest round number
 
 
 
-#### floor(precision) 
+#### Chain.floor(precision) 
 
 Round the number down
 
@@ -802,7 +802,7 @@ Round the number down
 
 
 
-#### ceil(precision) 
+#### Chain.ceil(precision) 
 
 Round the number up
 
@@ -825,7 +825,7 @@ Round the number up
 
 
 
-#### pow(power) 
+#### Chain.pow(power) 
 
 Pow
 
@@ -848,7 +848,7 @@ Pow
 
 
 
-#### mul(value) 
+#### Chain.mul(value) 
 
 Multiply
 
@@ -871,7 +871,7 @@ Multiply
 
 
 
-#### div(divisor) 
+#### Chain.div(divisor) 
 
 Divide value by a divisor
 
@@ -894,7 +894,7 @@ Divide value by a divisor
 
 
 
-#### sub(number) 
+#### Chain.sub(number) 
 
 Substract a number
 
@@ -917,7 +917,7 @@ Substract a number
 
 
 
-#### add(value) 
+#### Chain.add(value) 
 
 Add a number
 
@@ -940,7 +940,7 @@ Add a number
 
 
 
-#### max(numbers) 
+#### Chain.max(numbers) 
 
 Returns the highest number
 
@@ -963,7 +963,7 @@ Returns the highest number
 
 
 
-#### min(numbers) 
+#### Chain.min(numbers) 
 
 Returns the lowest number
 
@@ -986,7 +986,7 @@ Returns the lowest number
 
 
 
-#### abs() 
+#### Chain.abs() 
 
 Returns the absolute value of the specified number
 
@@ -1002,7 +1002,7 @@ Returns the absolute value of the specified number
 
 
 
-#### done(plus) 
+#### Chain.done(plus) 
 
 Return the final value of the chain
 
@@ -1025,7 +1025,7 @@ Return the final value of the chain
 
 
 
-#### raw() 
+#### Chain.raw() 
 
 Get the raw value
 

@@ -1,5 +1,16 @@
 import {Bcmath} from 'bcmath'
 
+function proxy(obj, name) {
+    const func = obj[name].bind(obj)
+    return arg => {
+        if (Array.isArray(arg)) {
+            return func(...arg)
+        } else {
+            return func(...arguments)
+        }
+    }
+}
+
 /*
  Based on ndef.parser, by Raphael Graf(r@undefined.ch)
  http://www.undefined.ch/mparser/index.html
@@ -316,13 +327,13 @@ export function Parser(math) {
             "asin": Math.asin,
             "acos": Math.acos,
             "atan": Math.atan,
-            sqrt: math.sqrt,
+            sqrt: math.sqrt.bind(math),
             "log": Math.log,
             abs: math.abs.bind(math),
-            ceil: math.ceil,
-            floor: math.floor,
-            round: math.round,
-            "-": math.neg,
+            ceil: proxy(math, 'ceil'),
+            floor: proxy(math, 'floor'),
+            round: proxy(math, 'round'),
+            "-": math.neg.bind(math),
             "exp": Math.exp
         };
 
@@ -339,15 +350,16 @@ export function Parser(math) {
 
         this.functions = {
             random, fac,
-            min: math.min.bind(math),
-            max: math.max.bind(math),
-            pyt, pow: math.pow.bind(math),
+            min: proxy(math, 'min'),
+            max: proxy(math, 'max'),
+            pyt,
+            pow: proxy(math, 'pow'),
             "atan2": Math.atan2
         }
 
         this.consts = {
-            "E": Math.E,
-            "PI": Math.PI
+            E: () => Math.E,
+            PI: () => math.pi()
         };
     }
 
@@ -371,19 +383,19 @@ export function Parser(math) {
         sqrt: math.sqrt.bind(math),
         log: Math.log,
         abs: math.abs.bind(math),
-        ceil: Math.ceil,
-        floor: Math.floor,
-        round: Math.round,
-        random: random,
+        ceil: proxy(math, 'ceil'),
+        floor: proxy(math, 'floor'),
+        round: proxy(math, 'round'),
+        random,
         fac,
         exp: Math.exp,
-        min: math.min,
-        max: math.max,
+        min: proxy(math, 'min'),
+        max: proxy(math, 'max'),
         pyt,
         pow: math.pow,
         atan2: Math.atan2,
-        E: Math.E,
-        PI: Math.PI
+//        E: Math.E,
+//        PI: Math.PI
     };
 
     var PRIMARY = 1 << 0;
@@ -645,14 +657,12 @@ export function Parser(math) {
         isConst: function () {
             var str;
             for (var i in this.consts) {
-                if (true) {
-                    var L = i.length;
-                    str = this.expression.substr(this.pos, L);
-                    if (i === str) {
-                        this.tokennumber = this.consts[i];
-                        this.pos += L;
-                        return true;
-                    }
+                var L = i.length;
+                str = this.expression.substr(this.pos, L);
+                if (i === str) {
+                    this.tokennumber = this.consts[i]();
+                    this.pos += L;
+                    return true;
                 }
             }
             return false;
