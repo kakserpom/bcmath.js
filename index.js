@@ -130,7 +130,7 @@ export class BcmathClass {
     ceil(number, precision = 0) {
         number = number.toString()
         const s = number.split('.', 2)[1] || ''
-        const f = floor(number, precision)
+        const f = this.floor(number, precision)
         const cmp = bccomp(number, f, s.length)
         if (cmp > 0) {
             return trimZeroes(bcadd(f, 1 / pow(10, precision), precision))
