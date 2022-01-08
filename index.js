@@ -161,8 +161,8 @@ export class Chain {
 
 
     /**
-     *
-     * @param plus
+     * Return the final value of the chain
+     * @param plus If true, positive number will be prepended by + sign. Default: false
      * @returns {string}
      */
     done({plus = false} = {}) {
@@ -345,8 +345,8 @@ export function add(left, right, scale = 10) {
 
 /**
  * Get the modulus
- * @param number
- * @param divisor
+ * @param number Number
+ * @param divisor Divisor
  * @returns {string}
  */
 export function mod(number, divisor) {
