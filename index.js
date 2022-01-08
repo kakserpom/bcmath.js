@@ -241,7 +241,7 @@ export class BcmathClass {
      */
 
     isBigInt(number) {
-        return compare(abs(number), '9223372036854775807') <= 0
+        return this.compare(this.abs(number), '9223372036854775807') <= 0
     }
 
     /**
@@ -251,7 +251,7 @@ export class BcmathClass {
      */
 
     isSafeBigInt(number) {
-        return compare(abs(number), Number.MAX_SAFE_INTEGER) <= 0
+        return this.compare(this.abs(number), Number.MAX_SAFE_INTEGER) <= 0
     }
 
     /**
