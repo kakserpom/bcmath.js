@@ -8,13 +8,21 @@ const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 export class Chain {
 
     /**
-     *
-     * @param value Number
+     * Constructor
+     * @param number Number
      * @param scale Number of decimal places (default: 10)
      */
-    constructor(value, scale = 10) {
-        this.value = value
+    constructor(number, scale = 10) {
+        this.value = number
         this._scale = scale
+    }
+
+    /**
+     * toJSON
+     * @returns {string}
+     */
+    toJSON() {
+        return trimZeroes(this.value)
     }
 
     /**
@@ -201,18 +209,19 @@ function trimZeroes(value) {
 
 /**
  * Returns Chain object
- * @param value
+ * @param number Number to start with
+ * @param scale Number of decimal places
  * @returns {Chain}
  */
-export function chain(value) {
-    return new Chain(value)
+export function chain(number, scale = 10) {
+    return new Chain(number, scale)
 }
 
 /**
  * Returns:
-    -1 if left is lesser than right
-    0 if left is equal to right
-    1 if left is greater than right
+ -1 if left is lesser than right
+ 0 if left is equal to right
+ 1 if left is greater than right
  * @param left Left operand
  * @param right Right operand
  * @returns {int}

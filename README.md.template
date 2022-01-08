@@ -1,0 +1,25 @@
+bcmath
+=======
+[![total downloads of bcmath](https://img.shields.io/npm/dt/bcmath.svg)](https://www.npmjs.com/package/bcmath)
+[![bcmath's License](https://img.shields.io/npm/l/bcmath.svg)](https://www.npmjs.com/package/bcmath)
+[![latest version of bcmath](https://img.shields.io/npm/v/bcmath.svg)](https://www.npmjs.com/package/bcmath)
+
+*Arbitrary-length arithmetics without hassle.*
+<br />
+
+**bcmath** package is a robust solution for calculations when precision is key.
+
+- **No** to floating-point numbers.
+- **No** to length/precision limits
+- **Yes** to an API that makes sense. 
+
+## Examples
+```
+%%% EXAMPLES %%%
+```
+## API
+%%% API %%%
+
+## Development
+
+GitHub: https://github.com/kakserpom/bcmath.js
