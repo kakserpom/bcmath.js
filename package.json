@@ -5,7 +5,8 @@
   "description": "Arbitrary-length arithmetics API based on locutus/php/bcmath",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-readme": "node build-readme.js"
   },
   "author": "kak.serpom.po.yaitsam@gmail.com",
   "license": "ISC",

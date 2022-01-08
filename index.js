@@ -252,8 +252,8 @@ export function pow(number, power, scale = 10) {
         }
     } else {
         while (bccomp(power, '1', scale) > 0) {
-            power = bcsub(power, '1', scale + 5)
-            result = bcmul(result, number, scale)
+            power = bcsub(power, '1', scale)
+            result = bcmul(result, number, scale + 5)
         }
     }
     return round(result, scale)
@@ -267,11 +267,11 @@ export function pow(number, power, scale = 10) {
  */
 export function round(number = 0, precision) {
     if (precision >= 0) {
-        return bcround(number, precision)
+        return trimZeroes(bcround(number, precision))
     }
     precision = abs(precision)
     const p = pow(10, precision)
-    return bcmul(bcround(bcdiv(floor(number), p), precision), p)
+    return trimZeroes(bcmul(bcround(bcdiv(floor(number), p), precision), p))
 }
 
 /**
@@ -332,8 +332,8 @@ export function multiply(number, multiplier, scale = 10) {
 
 /**
  * Divide
- * @param number
- * @param divisor
+ * @param number Number
+ * @param divisor Divisor
  * @param scale Number of decimal places
  * @returns {string}
  */
@@ -427,7 +427,7 @@ export function isSafeBigInt(number) {
 
 /**
  *
- * @returns {Generator<number, void, *>}
+ * @returns {Generator<number>}
  */
 function* generateDigitsOfPi() {
     let q = 1n
@@ -470,3 +470,18 @@ export function pi(scale = 10) {
 export function piFormatted(scale = 1000) {
     return pi(scale).match(/^3\.|\d{1,50}/g).join('\n')
 }
+
+/**
+ * Calculate square root
+ * @param number
+ * @param scale
+ * @returns {string}
+ */
+export function sqrt(number, scale = 50) {
+    let square = 1, i = 0
+    do {
+        square = divide(add(divide(number, square, scale), square, scale), 2, scale)
+    } while (compare(i++, number) < 0)
+    return square
+}
+

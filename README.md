@@ -38,8 +38,10 @@ console.log(n.round(-3).done())
 //173415000
 
 console.log(math.max([1, 2, 3.61, 3.62], 1))
-// 3.61   (scale is 1)
+// 3.61   (scale is 1
 
+console.log(math.pi(50))
+// 3.14159265358979323846264338327950288419716939937510
 ```
 ## API
 ### Classes
@@ -107,13 +109,16 @@ console.log(math.max([1, 2, 3.61, 3.62], 1))
 <dt><a href="#isSafeBigInt">isSafeBigInt(number)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Check if the number is safe to use in Javascript BigInt</p>
 </dd>
-<dt><a href="#generateDigitsOfPi">generateDigitsOfPi()</a> ⇒ <code>Generator.&lt;number, void, *&gt;</code></dt>
+<dt><a href="#generateDigitsOfPi">generateDigitsOfPi()</a> ⇒ <code>Generator.&lt;number&gt;</code></dt>
 <dd></dd>
 <dt><a href="#pi">pi(scale)</a> ⇒ <code>string</code></dt>
 <dd><p>Get π</p>
 </dd>
 <dt><a href="#piFormatted">piFormatted(scale)</a> ⇒ <code>string</code></dt>
 <dd><p>π in a formatted string, up to 50 digits per line</p>
+</dd>
+<dt><a href="#sqrt">sqrt(number, scale)</a> ⇒ <code>string</code></dt>
+<dd><p>Calculate square root</p>
 </dd>
 </dl>
 
@@ -237,8 +242,8 @@ Divide
 
 | Param | Description |
 | --- | --- |
-| number |  |
-| divisor |  |
+| number | Number |
+| divisor | Divisor |
 | scale | Number of decimal places |
 
 <a name="add"></a>
@@ -327,7 +332,7 @@ Check if the number is safe to use in Javascript BigInt
 
 <a name="generateDigitsOfPi"></a>
 
-### generateDigitsOfPi() ⇒ <code>Generator.&lt;number, void, \*&gt;</code>
+### generateDigitsOfPi() ⇒ <code>Generator.&lt;number&gt;</code>
 **Kind**: global function  
 <a name="pi"></a>
 
@@ -351,7 +356,17 @@ Get π
 | --- | --- |
 | scale | Number of decimal places |
 
+<a name="sqrt"></a>
 
+### sqrt(number, scale) ⇒ <code>string</code>
+Calculate square root
+
+**Kind**: global function  
+
+| Param |
+| --- |
+| number | 
+| scale |
 
 ## Development
 

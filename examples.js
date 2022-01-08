@@ -21,4 +21,7 @@ console.log(n.round(-3).done())
 //173415000
 
 console.log(math.max([1, 2, 3.61, 3.62], 1))
-// 3.61   (scale is 1)
+// 3.61   (scale is 1
+
+console.log(math.pi(50))
+// 3.14159265358979323846264338327950288419716939937510
