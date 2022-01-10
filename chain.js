@@ -4,7 +4,7 @@ import * as bc_pkg from "locutus/php/bc/index.js";
 const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 
 /**
- * 
+ *
  */
 export class Chain {
 
@@ -66,7 +66,7 @@ export class Chain {
      * @returns {Chain}
      */
     floor(precision = 0) {
-        this.value = floor(this.value, precision)
+        this.value = this.math.floor(this.value, precision)
         return this
     }
 
@@ -76,7 +76,7 @@ export class Chain {
      * @returns {Chain}
      */
     ceil(precision = 0) {
-        this.value = ceil(this.value, precision)
+        this.value = this.math.ceil(this.value, precision)
         return this
     }
 
@@ -163,8 +163,8 @@ export class Chain {
      * @returns {Chain}
      */
     abs() {
-        if (compare(this.value, 0) < 0) {
-            this.multiply(-1)
+        if (this.math.compare(this.value, 0) < 0) {
+            this.mul(-1)
         }
         return this
     }
@@ -177,7 +177,7 @@ export class Chain {
      */
     done({plus = false} = {}) {
         let value = trimZeroes(this.value)
-        if (plus && compare(value, 0, this._scale) > 0) {
+        if (plus && this.compare(0) > 0) {
             return '+' + value
         }
         return value
