@@ -133,7 +133,7 @@ export class BcmathClass {
         const f = this.floor(number, precision)
         const cmp = bccomp(number, f, s.length)
         if (cmp > 0) {
-            return trimZeroes(bcadd(f, 1 / pow(10, precision), precision))
+            return trimZeroes(bcadd(f, 1 / this.pow(10, precision), precision))
         } else {
             return trimZeroes(number)
         }
