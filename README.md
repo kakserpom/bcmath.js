@@ -17,8 +17,8 @@ bcmath
 ```
 import {Bcmath} from 'bcmath'
 
-// Spawn a bcmath nstance with a precision of 20 decimal places
-const math  = Bcmath(20)
+// Spawn a bcmath instance with a precision of 20 decimal places
+const math = Bcmath(20)
 
 console.log(0.1 + 0.2 + 0.3)
 // 0.6000000000000001 :-(
@@ -50,6 +50,7 @@ console.log(math.pi(50))
 
 console.log(math.sqrt(2))
 // 1.41421568627450980392
+
 ```
 
 ## API
@@ -636,6 +637,29 @@ Evaluate an expression
 
 
 - `Void`
+
+
+
+#### BcmathClass.parse(expr) 
+
+
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| expr |  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `function(*): *`  
 
 
 

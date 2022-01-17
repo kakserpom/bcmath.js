@@ -25,7 +25,7 @@ export class BcmathClass {
     constructor(scale = 10) {
         this._scale = scale
     }
-    
+
     /**
      * Returns Chain object
      * @param {string|number|BigInt} number Number to start with
@@ -334,6 +334,17 @@ export class BcmathClass {
     eval(expr, variables = {}) {
         const parser = new Parser(this)
         return parser.evaluate(expr, variables)
+    }
+
+    /**
+     *
+     * @param expr
+     * @returns {function(*=): *}
+     */
+    parse(expr) {
+        const parser = new Parser(this)
+        const func = parser.parse(expr)
+        return (variables = {}) => func.evaluate(variables)
     }
 }
 
