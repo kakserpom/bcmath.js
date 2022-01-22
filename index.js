@@ -32,7 +32,7 @@ export class BcmathClass {
      * @param {int} scale Number of decimal places
      * @returns {Chain}
      */
-    chain(number, scale) {
+    chain(number, scale = null) {
         return new Chain(number, scale || this._scale)
     }
 
@@ -183,7 +183,7 @@ export class BcmathClass {
      */
 
     mod(number, divisor) {
-        return trimZeroes(this.sub(number, this.mul(divisor, this.floor(divide(number, divisor)))))
+        return trimZeroes(this.sub(number, this.mul(divisor, this.floor(this.div(number, divisor)))))
     }
 
 
