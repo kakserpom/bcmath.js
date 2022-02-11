@@ -1,8 +1,9 @@
-import * as bc_pkg from "locutus/php/bc/index.js";
-
-const {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} = bc_pkg
 import {Parser} from "./parser.js";
 import {Chain} from "bcmath/chain.js";
+import BigNumber  from "bignumber.js";
+import {bcmul, bcdiv, bcadd, bcsub, bccomp, bcround} from './bc.js'
+
+
 
 /**
  * Get a BcmathClass instance
@@ -24,6 +25,7 @@ export class BcmathClass {
      */
     constructor(scale = 10) {
         this._scale = scale
+        this.BN = BigNumber.clone({ DECIMAL_PLACES: scale})
     }
 
     /**
@@ -46,7 +48,8 @@ export class BcmathClass {
      * @returns {int}
      */
     compare(left, right) {
-        return bccomp(left, right, this._scale)
+        const bn = new this.BN(left)
+        return bn.comparedTo(right)
     }
 
     /**
@@ -57,24 +60,8 @@ export class BcmathClass {
      * @returns {number|*}
      */
     pow(number, power) {
-        const cmp = bccomp(power, '0', this._scale)
-        if (cmp === 0) {
-            return 1
-        }
-
-        let result = number
-        if (cmp < 0) {
-            while (bccomp(power, '1', this._scale) < 0) {
-                power = bcadd(power, '1', this._scale)
-                result = bcdiv(result, number, this._scale + 5)
-            }
-        } else {
-            while (bccomp(power, '1', this._scale) > 0) {
-                power = bcsub(power, '1', this._scale)
-                result = bcmul(result, number, this._scale + 5)
-            }
-        }
-        return this.round(result, this._scale)
+        const bn = new this.BN(number)
+        return bn.pow(power)
     }
 
     /**
@@ -111,11 +98,8 @@ export class BcmathClass {
      * @returns {string}
      */
     abs(number) {
-        if (this.compare(number, 0) >= 0) {
-            return trimZeroes(number)
-        } else {
-            return trimZeroes(this.mul(number, -1))
-        }
+        const bn = new BigNumber(number)
+        return bn.abs()
     }
 
     /**

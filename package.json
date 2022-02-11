@@ -11,7 +11,8 @@
   "author": "kak.serpom.po.yaitsam@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "locutus": "^2.0.15"
+    "locutus": "^2.0.15",
+    "bignumber.js": "^9.0.2"
   },
   "homepage": "https://github.com/kakserpom/bcmath.js",
   "files": [
