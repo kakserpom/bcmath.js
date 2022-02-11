@@ -125,8 +125,10 @@ export class Chain {
      * @param value
      * @returns {Chain}
      */
-    add(number) {
-        this.value = bcadd(this.value, number, this._scale)
+    add(...numbers) {
+        numbers.forEach(number => {
+            this.value = bcadd(this.value, number, this._scale)
+        })
         return this
     }
 

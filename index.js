@@ -78,6 +78,19 @@ export class BcmathClass {
     }
 
     /**
+     *
+     * @param numbers
+     * @returns {Chain}
+     */
+    avg(...numbers) {
+       return this
+           .chain(0)
+           .add(...numbers)
+           .div(numbers.length)
+           .done()
+    }
+
+    /**
      * Round the number to the nearest round number
      * @param {string|number|BigInt} number Number
      * @param precision Number of decimal places. Can be negative. Default: 0

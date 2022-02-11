@@ -194,6 +194,29 @@ Number to be raised to a power
 
 
 
+#### BcmathClass.avg(numbers) 
+
+
+
+
+
+
+##### Parameters
+
+| Name | Type | Description |  |
+| ---- | ---- | ----------- | -------- |
+| numbers |  |  | &nbsp; |
+
+
+
+
+##### Returns
+
+
+- `Chain`  
+
+
+
 #### BcmathClass.round(number, precision) 
 
 Round the number to the nearest round number
