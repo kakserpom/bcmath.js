@@ -19,6 +19,7 @@
     "index.js",
     "chain.js",
     "parser.js",
+    "bc.js",
     "README.md"
   ]
 }
