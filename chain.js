@@ -45,7 +45,7 @@ export class Chain {
      * @returns {int}
      */
     compare(number) {
-        return bccomp(this.value, number, this._scale)
+        return this.math.compare(this.value, number, this._scale)
     }
 
     /**
