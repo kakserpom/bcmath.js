@@ -51,7 +51,7 @@ export class Chain {
     /**
      * Round value to the nearest round number
      * @param precision Number of decimal places. Can be negative. Default: 0
-     * @returns {string}
+     * @returns {Chain}
      */
     round(precision = 0) {
         this.value = this.math.round(this.value, precision)
@@ -182,8 +182,7 @@ export class Chain {
         }
         return value
     }
-
-
+    
     /**
      * Get the raw value
      * @returns {*}

@@ -67,7 +67,7 @@ export class BcmathClass {
     /**
      *
      * @param numbers
-     * @returns {Chain}
+     * @returns {string}
      */
     avg(...numbers) {
        return this
@@ -99,7 +99,7 @@ export class BcmathClass {
      */
     abs(number) {
         const bn = new BigNumber(number)
-        return bn.abs()
+        return bn.abs().toFixed()
     }
 
     /**
