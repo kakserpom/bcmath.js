@@ -213,7 +213,7 @@ Number to be raised to a power
 ##### Returns
 
 
-- `Chain`  
+- `string`  
 
 
 
@@ -822,7 +822,7 @@ Round value to the nearest round number
 ##### Returns
 
 
-- `string`  
+- `Chain`  
 
 
 
