@@ -61,7 +61,7 @@ export class BcmathClass {
      */
     pow(number, power) {
         const bn = new this.BN(number)
-        return bn.pow(power)
+        return trimZeroes(bn.pow(power))
     }
 
     /**
